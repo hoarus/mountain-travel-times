@@ -6,6 +6,8 @@ function App() {
   
   let [aggregateData, setAggregateData] = useState();
   let [status, setStatus] = useState("loading");
+  const hours = [ "12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", 
+                  "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"]
 
 
   useEffect(() => {
@@ -73,21 +75,44 @@ function App() {
     )
   }
 
+  function toTimeString(totalSeconds) {
+    const totalMs = totalSeconds * 1000;
+    const result = new Date(totalMs).toISOString().slice(12, 16);
+  
+    return result;
+  }
+
   function TravelDetails(){
     return(
       <div>
-      <div>Travel Details</div>
-      <ul>
-  {aggregateData['0']['min']}
-      </ul>
+      <h2>Travel Details</h2>
+      <table>
+      <tr>
+        <th>Time</th>
+        <th>Min</th>
+        <th>Average</th>
+        <th>Max</th>
+      </tr>
+      {Object.keys(aggregateData).map(key => {
+        let min = toTimeString(aggregateData[key]['min']);
+        let max = toTimeString(aggregateData[key]['max']);
+        let avg = toTimeString(aggregateData[key]['avg']);
+        return (
+        <tr>
+          <td>{hours[key]}</td>
+          <td>{min}</td>
+          <td>{avg}</td>
+          <td>{max}</td>
+        </tr>)
+      }
+    )}
+    </table>
       </div>
     )
   }
     
   return (
     <div>
-      <div className="App">{JSON.stringify(aggregateData)}
-      </div>
       {aggregateData && 
       <TravelDetails></TravelDetails>}
     </div>
