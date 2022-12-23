@@ -7,6 +7,13 @@
 
 .search-options-wrapper {
   width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-options-wrapper > form {
+  width: 80%;
 }
 
 .data-display-wrapper {
@@ -25,4 +32,16 @@ table {
 
 table, th, td {
   border: solid 2px black;
+}
+
+.reverse-image {
+  width: 10%;
+}
+
+.reverse-image:hover {
+  filter: invert(49%) sepia(53%) saturate(2481%) hue-rotate(301deg) brightness(103%) contrast(101%);
+}
+
+.reverse-image:active {
+  filter: invert(26%) sepia(72%) saturate(5333%) hue-rotate(285deg) brightness(98%) contrast(98%);
 }

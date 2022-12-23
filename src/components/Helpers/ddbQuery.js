@@ -22,13 +22,16 @@ export const ddbQuery = function(from, to, day){
                 S: code
                }, 
                ":day": {
+                // Note that Sunday causes errors here. I'm hoping it's just because it didn't start before midnight. Should be resolved by Christmas
                 S: day
                },
              }, 
             KeyConditionExpression: "CODE = :code AND #day = :day",
           };
           var result = await ddbClient.query(params).promise()
+          console.log(result.Items)
           return result.Items;
+          
       } catch (error) {
           console.error(error);
       }

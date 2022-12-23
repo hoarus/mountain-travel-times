@@ -1,12 +1,13 @@
 import React from 'react';
 import Select from 'react-select'
+import reverseImage from './revert-hand-drawn-arrows.png'
 
 function SearchOptions(props) {
-    const {from, setFrom, to, setTo, day, setDay} = props
+    const {from, setFrom, to, setTo, day, setDay, direction, reverseDirection} = props
     const mountainLocations = ["Arapahoe Basin", "Copper", "Eldora", "Steamboat Springs", "Winter Park"]
     const cityLocations = ["Denver", "Golden"]
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    
+
 
     const handleFromSelect = function(option) {
         setFrom(option.value)
@@ -33,13 +34,29 @@ function SearchOptions(props) {
         return {value: day, label: day} 
     });
 
+    const listFromLocations = function() {
+        if(direction === "to the Mountains") {
+            return listCityLocations;
+        } else {
+            return listMountainLocations
+        }
+    };
+    const listToLocations = function() {
+        if(direction === "to the Mountains") {
+            return listMountainLocations;
+        } else {
+            return listCityLocations
+        }
+    }
+
   return(
     <div className='search-options-wrapper'>
-    <form>
-    <Select name="from" options = {listMountainLocations} placeholder="From" onChange={handleFromSelect}/>
-    <Select name="to" isSearchable={false} options = {listCityLocations} placeholder="To" onChange={handleToSelect}/>
-    <Select name="day" isSearchable={false} options = {listDays} placeholder="Day" onChange={handleDaySelect}/>
-    </form>
+        <img src={reverseImage} className='reverse-image' onClick={reverseDirection}/>
+        <form>
+            <Select name="from" options = {listFromLocations()} placeholder="From" onChange={handleFromSelect}/>
+            <Select name="to" isSearchable={false} options = {listToLocations()} placeholder="To" onChange={handleToSelect}/>
+            <Select name="day" isSearchable={false} options = {listDays} placeholder="Day" onChange={handleDaySelect}/>
+        </form>
     </div>
   )
 }
