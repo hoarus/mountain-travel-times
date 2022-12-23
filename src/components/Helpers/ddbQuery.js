@@ -1,8 +1,12 @@
 import { ddbClient } from "./ddbClient.js";
 import { getLocalDateTimeString, getDay, getMonth } from "./localDateTime.js";
 
-export const ddbQuery = function(){
+export const ddbQuery = function(from, to, day){
+  console.log(2)
 
+  const code = `${from.slice(0,3)}${to.slice(0,3)}`.toUpperCase();
+  console.log(code);
+  
   let todayDay = getDay(getLocalDateTimeString(new Date()));
 
     async function getData(){
@@ -15,10 +19,10 @@ export const ddbQuery = function(){
             },
             ExpressionAttributeValues: {
               ":code": {
-                S: "ELDDEN"
+                S: code
                }, 
                ":day": {
-                S: todayDay
+                S: day
                },
              }, 
             KeyConditionExpression: "CODE = :code AND #day = :day",
