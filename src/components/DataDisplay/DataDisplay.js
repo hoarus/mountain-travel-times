@@ -14,6 +14,7 @@ function DataDisplay(props) {
 
 
   useEffect(() => {
+    console.log("running")
     ddbQuery(from, to, day).then((response) => {
       const filteredData = response.map((dataPoint) => 
         ({  HOUR: roundHour(dataPoint.TIMESTAMP),
@@ -34,7 +35,7 @@ function DataDisplay(props) {
           hours += 1;
         }
         // Don't round to the next day (inconsequential due to limited traffic at night)
-        hours = Math.min(24, hours)
+        hours = Math.min(23, hours)
         return hours;
       }
   
@@ -69,7 +70,7 @@ function DataDisplay(props) {
       return stats;
       
     }
-  }, []);
+  }, [from, to, day]);
 
   if (status == "loading" ||day === "Day" || from === "From" || to === "To") { 
     return (
@@ -86,8 +87,6 @@ function DataDisplay(props) {
 
   function TravelDetails(){
     return(
-      <div>
-        <div>{from}</div>
       <table>
       <thead>
       <tr>
@@ -113,12 +112,11 @@ function DataDisplay(props) {
     )}
     </tbody>
     </table>
-      </div>
     )
   }
     
   return (
-    <div>
+    <div className='data-display-wrapper'>
       {aggregateData && 
       <TravelDetails></TravelDetails>}
     </div>

@@ -20,10 +20,7 @@ function App() {
       day = {day}
       setDay = {setDay}
     />
-  
-    <div>From: {from}</div>
-    <div>To: {to}</div>
-    <div>Day: {day}</div>
+
     <DataDisplay
       from = {from}
       to = {to}

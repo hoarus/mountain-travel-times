@@ -17,10 +17,7 @@ function SearchOptions(props) {
     const handleDaySelect = function(option) {
         setDay(option.value)
     }
-    const handleSubmit = function(event) {
-        event.preventDefault();
-        alert('Submit')
-    }
+
 
 
 
@@ -38,11 +35,10 @@ function SearchOptions(props) {
 
   return(
     <div className='search-options-wrapper'>
-    <form onSubmit={handleSubmit}>
+    <form>
     <Select name="from" options = {listMountainLocations} placeholder="From" onChange={handleFromSelect}/>
     <Select name="to" isSearchable={false} options = {listCityLocations} placeholder="To" onChange={handleToSelect}/>
     <Select name="day" isSearchable={false} options = {listDays} placeholder="Day" onChange={handleDaySelect}/>
-    <input type="submit" value="Submit"/>
     </form>
     </div>
   )
