@@ -15,9 +15,7 @@ function BarGraph(props) {
           highestMax = max;
         }
       }
-      console.log(highestMax);
       let answer = Math.floor(highestMax /60) * 60 + 60;
-      console.log(answer)
       return (answer);
     }
 

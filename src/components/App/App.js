@@ -10,6 +10,9 @@ function App() {
   const [day, setDay] = useState("Day");
   const [direction, setDirection] = useState("from the Mountains")
 
+  console.log(from);
+  console.log(to);
+
   function reverseDirection() {
     if (direction === "to the Mountains") {
       setDirection("from the Mountains")

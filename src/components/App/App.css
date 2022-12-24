@@ -1,5 +1,6 @@
 .page-wrapper{
-
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -9,10 +10,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 3rem;
 }
 
 .search-options-wrapper > form {
   width: 80%;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+
+}
+
+.drop-down{
+  flex-grow: 1;
 }
 
 .data-display-wrapper {
@@ -34,11 +48,12 @@ table, th, td {
 }
 
 .reverse-image {
-  width: 10%;
+  height: 4rem;
+  padding-bottom: 1rem;
 }
 
 .reverse-image:hover {
-  filter: invert(49%) sepia(53%) saturate(2481%) hue-rotate(301deg) brightness(103%) contrast(101%);
+  filter: invert(49%) sepia(15%) saturate(1326%) hue-rotate(204deg) brightness(107%) contrast(95%);
 }
 
 .reverse-image:active {
@@ -62,5 +77,13 @@ table, th, td {
 }
 
 .tooltip-time{
+  color: #8884d8;
+}
+
+.chart-name{
+  font-weight: 400;
+}
+
+strong {
   color: #8884d8;
 }
