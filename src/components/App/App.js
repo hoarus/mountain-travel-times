@@ -8,7 +8,7 @@ function App() {
   const [from, setFrom] = useState("From");
   const [to, setTo] = useState("To");
   const [day, setDay] = useState("Day");
-  const [direction, setDirection] = useState("to the Mountains")
+  const [direction, setDirection] = useState("from the Mountains")
 
   function reverseDirection() {
     if (direction === "to the Mountains") {
