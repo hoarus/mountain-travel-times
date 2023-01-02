@@ -1,29 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import Select from 'react-select'
 import reverseImage from './revert-hand-drawn-arrows.png'
 
-function useForceUpdate(){
-    const [value, setValue] = useState(0); // integer state
-    return () => setValue(value => value + 1); // update state to force render
-    // An function that increment 👆🏻 the previous state like here 
-    // is better than directly setting `value + 1`
-}
+
+
 
 function SearchOptions(props) {
+
+
     const {from, setFrom, to, setTo, day, setDay, direction, reverseDirection} = props
     const mountainLocations = ["Arapahoe Basin", "Copper", "Eldora", "Steamboat Springs", "Winter Park"]
     const cityLocations = ["Denver", "Golden"]
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    const [, updateState] = React.useState();
 
-    const forceUpdate = useForceUpdate();
-
-
-    const setReverseDirection = function() {
-        reverseDirection();
-        forceUpdate();
-
-    }
+    // On Change Functions
     const handleFromSelect = function(option) {
         setFrom(option.value)
     }
@@ -34,7 +24,7 @@ function SearchOptions(props) {
         setDay(option.value)
     }
 
-
+    // Dynamically map lists to Select Options
     const listMountainLocations =  mountainLocations.map((location) => {
         return {value: location, label: location} 
     });
@@ -65,7 +55,7 @@ function SearchOptions(props) {
 
   return(
     <div className='search-options-wrapper'>
-        <img src={reverseImage} className='reverse-image' onClick={forceUpdate}/>
+        <img src={reverseImage} className='reverse-image' onClick={reverseDirection}/>
         <form className='search-form'>
             <Select className='drop-down' name="from" isSearchable={false} options = {listFromLocations()} placeholder="From" onChange={handleFromSelect}/>
             <div>to</div>
