@@ -2,8 +2,7 @@ import './App.css';
 import React, {Fragment, useState} from 'react';
 import DataDisplay from '../DataDisplay/DataDisplay';
 import SearchOptions from '../SearchOptions/SearchOptions';
-import ReverseDirection from '../ReverseDirection/ReverseDirection';
-import SingleSelect from '../ClearValue/SingleSelect'
+
 
 function App() {
 
@@ -32,37 +31,7 @@ function App() {
     }
   }
   
-  function UpdatedSearchOptions() {
-
-    if (direction==="from the Mountains") {
-      return(
-        <ReverseDirection
-        from = {from}
-        setFrom = {setFrom}
-        to = {to}
-        setTo = {setTo}
-        day = {day}
-        setDay = {setDay}
-        direction = {direction}
-        reverseDirection = {reverseDirection}
-      />
-      )
-    } else {
-      return(
-        <ReverseDirection
-        from = {from}
-        setFrom = {setFrom}
-        to = {to}
-        setTo = {setTo}
-        day = {day}
-        setDay = {setDay}
-        direction = {direction}
-        reverseDirection = {reverseDirection}
-      />
-      )
-    }
-
-  }
+ 
   
   return(
     <div className='page-wrapper'>

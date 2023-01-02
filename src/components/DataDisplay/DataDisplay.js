@@ -27,7 +27,7 @@ function DataDisplay(props) {
 
   if (status == "loading" ||day === "Day" || from === "From" || to === "To") { 
     return (
-      <div>Loading</div>
+      <div></div>
     )
   }
 
