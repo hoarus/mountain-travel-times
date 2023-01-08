@@ -12,7 +12,6 @@ function App() {
   const [direction, setDirection] = useState("from the Mountains")
   const [scale, setScale] = useState("Hourly");
 
-  console.log(direction)
 
   function reverseDirection() {
     if (direction === "to the Mountains") {

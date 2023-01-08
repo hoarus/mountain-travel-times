@@ -1,7 +1,7 @@
 import { ddbQuery } from '../Helpers/ddbQuery';
 import React, {useState, useEffect} from 'react';
 import  BarGraph  from '../BarGraph/BarGraph';
-import {roundHour, determineStats} from '../Helpers/transformDDBData'
+import {roundHour, determineStats, convertDDBResponse} from '../Helpers/transformDDBData'
 
 function DataDisplay(props) {
 
@@ -14,14 +14,9 @@ function DataDisplay(props) {
 
   useEffect(() => {
     ddbQuery(from, to, day).then((response) => {
-      const filteredData = response.map((dataPoint) => 
-        ({  HOUR: roundHour(dataPoint.TIMESTAMP),
-            TRAVELTIME: dataPoint.TRAVELTIME})
-        )
       setStatus("complete");
-      let stats = determineStats(filteredData);
-      setAggregateData(stats);
-
+      let convertedData = convertDDBResponse(response);
+      setAggregateData(convertedData);
     });
   }, [from, to, day]);
 

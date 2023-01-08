@@ -1,6 +1,7 @@
 const hours = [ "12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", 
 "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"]
 
+
 function toTimeString(totalSeconds) {
     const totalMs = totalSeconds * 1000;
     const result = new Date(totalMs).toISOString().slice(12, 16);
@@ -21,6 +22,29 @@ function roundHour (timestamp) {
     hours = Math.min(23, hours)
     return hours;
   }
+
+function convertDDBResponse(array) {
+
+  let convertedArray = [];
+  for (let obj of array) {
+    convertedArray.push({
+      avgHour: obj.AVGHOUR.N,
+      avgHourDisplay: obj.AVGHOURDISPLAY.S,
+      avgMin: obj.AVGMIN.N,
+      avgSec: obj.AVGSEC.N,
+      day: obj.DAY.S,
+      hour: obj.HOUR.S,
+      max: obj.MAX.N,
+      maxHourDisplay: obj.MAXHOURDISPLAY.S,
+      min: obj.MIN.S,
+      minHourDisplay: obj.MINHOURDISPLAY.S,
+      month: obj.MONTH.s,
+    })
+  }
+  return convertedArray
+}
+
+
 
 function determineStats(array){
   function convertArrayToObject(array) {
@@ -63,4 +87,4 @@ function determineStats(array){
   
 }
 
-export {roundHour, determineStats}
+export {roundHour, determineStats, convertDDBResponse}
