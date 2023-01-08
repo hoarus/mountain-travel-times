@@ -10,6 +10,7 @@ function App() {
   const [to, setTo] = useState("To");
   const [day, setDay] = useState("Day");
   const [direction, setDirection] = useState("from the Mountains")
+  const [scale, setScale] = useState("Hourly");
 
   console.log(direction)
 
