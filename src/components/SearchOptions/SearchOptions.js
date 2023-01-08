@@ -51,7 +51,7 @@ function SearchOptions(props) {
             return listCityLocations
         }
     }
-    // Copy this link: https://codesandbox.io/s/react-select-clear-value-3d2xn?file=/example.js
+
 
   return(
     <div className='search-options-wrapper'>
